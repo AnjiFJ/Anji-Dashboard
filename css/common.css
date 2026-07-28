@@ -1,12 +1,12 @@
-/* 现场数据看板 common.css v2 — BMW 式设计语言
- * 深色高级表面 · 精准工程美学 · 细发丝线 · 锐利直角 · 单色点缀
+/* 现场数据看板 common.css v3 — BMW 式设计语言（浅色版）
+ * 纸面白底 · 精准工程美学 · 细发丝线 · 锐利直角 · 单色点缀
  */
 :root{
-  --bg:#0E0E10; --bg-raise:#141416; --panel:#17171A; --panel-2:#1C1C20;
-  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.16);
-  --txt:#F2F2F2; --txt2:#A6A6AB; --txt3:#6E6E74;
-  --blue:#0066B1; --blue-hi:#2E9BEF;
-  --ok:#3D9A50; --warn:#D9A626; --bad:#C03A31; --violet:#7E6FA8;
+  --bg:#F5F5F6; --bg-raise:#FAFAFB; --panel:#FFFFFF; --panel-2:#F0F0F2;
+  --line:rgba(0,0,0,.10); --line-2:rgba(0,0,0,.20);
+  --txt:#111113; --txt2:#55555A; --txt3:#8B8B91;
+  --blue:#0066B1; --blue-hi:#0066B1;
+  --ok:#2E7D42; --warn:#B8860B; --bad:#C03A31; --violet:#7E6FA8;
   --font-sans:"Helvetica Neue","PingFang SC","Microsoft YaHei","Segoe UI",Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -22,7 +22,7 @@ body{
 .header{
   display:flex; align-items:center; justify-content:space-between;
   padding:16px 28px; border-bottom:1px solid var(--line);
-  background:#0B0B0C;
+  background:#FFFFFF;
   position:sticky; top:0; z-index:50;
 }
 .header .title{display:flex; align-items:center; gap:16px}
@@ -104,12 +104,12 @@ thead th{
 }
 tbody td{padding:11px 14px; border-top:1px solid var(--line); white-space:nowrap;color:var(--txt);font-weight:300}
 tbody td b{font-weight:500}
-tbody tr:hover{background:rgba(255,255,255,.03)}
-tbody tr.subtotal{background:rgba(255,255,255,.03); font-weight:500}
+tbody tr:hover{background:rgba(0,0,0,.03)}
+tbody tr.subtotal{background:rgba(0,0,0,.03); font-weight:500}
 tbody tr.subtotal td{color:var(--txt);font-weight:500}
 .tag{display:inline-block;padding:2px 9px;font-size:11px;letter-spacing:.5px;border:1px solid}
-.tag.g{color:var(--ok);border-color:rgba(61,154,80,.5)}
-.tag.y{color:var(--warn);border-color:rgba(217,166,38,.5)}
+.tag.g{color:var(--ok);border-color:rgba(46,125,66,.45)}
+.tag.y{color:var(--warn);border-color:rgba(184,134,11,.45)}
 .tag.r{color:var(--bad);border-color:rgba(192,58,49,.5)}
 
 /* ===== 图表容器 ===== */
@@ -139,6 +139,7 @@ tbody tr.subtotal td{color:var(--txt);font-weight:500}
 .modal{
   width:100%; max-width:360px; background:var(--panel);
   border:1px solid var(--line-2); padding:28px;
+  box-shadow:0 12px 40px rgba(0,0,0,.12);
 }
 .modal h3{font-size:13px;font-weight:500;letter-spacing:2px;margin-bottom:8px;text-transform:uppercase}
 .modal h3::before{content:"";display:inline-block;width:8px;height:8px;background:var(--blue);margin-right:10px;vertical-align:1px}
@@ -185,7 +186,7 @@ tbody tr.subtotal td{color:var(--txt);font-weight:500}
 }
 .pill + .pill{border-left:1px solid var(--line-2)}
 .pill:hover{color:var(--txt)}
-.pill.active{background:#F2F2F2; color:#0B0B0C; font-weight:500}
+.pill.active{background:#111113; color:#FFFFFF; font-weight:500}
 .card-grid[data-goto]{cursor:pointer}
 .card-grid[data-goto] .stat-card{transition:background .15s}
 .card-grid[data-goto] .stat-card:hover{background:var(--panel-2)}

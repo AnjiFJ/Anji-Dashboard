@@ -60,8 +60,8 @@ function updateFlowView(data){
     else if(d.sat>=0.85) high++;
   });});
   var cards = [
-    {label:"线路班次总数", val:total,  color:"#2E9BEF"},
-    {label:"高饱和 (>85%)", val:high,   color:"#D9A626"},
+    {label:"线路班次总数", val:total,  color:"#0066B1"},
+    {label:"高饱和 (>85%)", val:high,   color:"#B8860B"},
     {label:"严重饱和 (>95%)", val:severe, color:"#C03A31"}
   ];
   document.getElementById("flowCards").innerHTML = cards.map(function(c){
@@ -89,7 +89,7 @@ function updateFlowView(data){
       },{
         label:"85% 高饱和线", type:"line",
         data: rows.map(function(){return 85;}),
-        borderColor:"#D9A626", borderDash:[6,5], borderWidth:1.5,
+        borderColor:"#B8860B", borderDash:[6,5], borderWidth:1.5,
         pointRadius:0, fill:false
       }]
     },
@@ -101,7 +101,7 @@ function updateFlowView(data){
       },
       scales:{
         y:{min:0, max:110, ticks:{callback:function(v){return v+"%";}},
-           grid:{color:"rgba(255,255,255,.06)"}},
+           grid:{color:"rgba(0,0,0,.06)"}},
         x:{grid:{display:false}}
       }
     }

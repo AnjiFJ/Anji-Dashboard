@@ -11,18 +11,18 @@ function destroyChart(key){ if(allCharts[key]){ allCharts[key].destroy(); delete
 
 /* ---------- Chart.js 全局配置与配色（BMW 式沉稳色板） ---------- */
 if(window.Chart){
-  Chart.defaults.color = "#A6A6AB";
+  Chart.defaults.color = "#6E6E74";
   Chart.defaults.borderColor = "rgba(255,255,255,.08)";
   Chart.defaults.font.family = '"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif';
 }
 function satColor(s){           // 饱和度配色
   if(s>=0.9) return "#C03A31";
-  if(s>=0.7) return "#D9A626";
-  return "#3D9A50";
+  if(s>=0.7) return "#B8860B";
+  return "#2E7D42";
 }
 function rateColor(r){          // 及时率配色（95 合格线）
-  if(r>=95) return "#3D9A50";
-  if(r>=90) return "#D9A626";
+  if(r>=95) return "#2E7D42";
+  if(r>=90) return "#B8860B";
   return "#C03A31";
 }
 

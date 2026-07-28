@@ -38,7 +38,7 @@ function renderDaokou(){
         },
         scales:{
           y:{min:80, max:100, ticks:{callback:function(v){return v+"%";}},
-             grid:{color:"rgba(255,255,255,.06)"}},
+             grid:{color:"rgba(0,0,0,.06)"}},
           x:{grid:{display:false}}
         }
       }
