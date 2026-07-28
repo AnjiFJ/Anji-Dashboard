@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>现场数据看板</title>
+<script src="js/chart.umd.min.js"></script>
+<link rel="stylesheet" href="css/common.css?v=1">
+</head>
+<body>
+
+<div class="header">
+  <div class="title">
+    <div class="logo">📊</div>
+    <h1>现场数据看板<small>PRODUCTION OPERATION DASHBOARD</small></h1>
+  </div>
+  <div class="clock"><b id="clockTime">--:--:--</b><br><span id="clockDate"></span></div>
+</div>
+
+<div class="main-tab-nav" id="tabNav">
+  <button class="tab-btn active" data-tab="overview">总览</button>
+  <button class="tab-btn" data-tab="flow">上线流量</button>
+  <button class="tab-btn" data-tab="gkb">排序零件<span class="lock">🔒</span></button>
+  <button class="tab-btn" data-tab="daokou">道口</button>
+  <button class="tab-btn" data-tab="plan">零件计划<span class="lock">🔒</span></button>
+  <button class="tab-btn" data-tab="daily">每日统计</button>
+  <button class="tab-btn" data-tab="peiliao">配料需求</button>
+</div>
+
+<!-- ========== 总览 ========== -->
+<div class="main-tab-content active" id="tab-overview">
+  <div class="info-bar" id="overviewInfo"></div>
+  <div class="section-title">上线流量 <span class="sub">点击进入明细 →</span></div>
+  <div class="card-grid" id="ovFlowCards" data-goto="flow"></div>
+  <div class="section-title">每日数据统计 <span class="sub">最新班次</span></div>
+  <div class="card-grid" id="ovDailyCards" data-goto="daily"></div>
+  <div class="section-title">道口卸货及时率 <span class="sub">当月</span></div>
+  <div class="card-grid" id="ovDaokouCards" data-goto="daokou"></div>
+  <div class="section-title">配料需求 <span class="sub">岗位配置</span></div>
+  <div class="card-grid" id="ovPeiliaoCards" data-goto="peiliao"></div>
+  <div class="note">点击卡片可进入对应模块查看详细数据</div>
+</div>
+
+<!-- ========== 上线流量 ========== -->
+<div class="main-tab-content" id="tab-flow">
+  <div class="loading" id="flowLoading">正在加载上线流量数据…</div>
+  <div id="flowBody" style="display:none">
+    <div class="info-bar" id="flowInfo"></div>
+    <div class="pill-toggle" id="flowPill">
+      <button class="pill active" data-group="big">大件线路</button>
+      <button class="pill" data-group="small">小件线路</button>
+    </div>
+    <div class="card-grid" id="flowCards"></div>
+    <div class="section-title">线路饱和度 <span class="sub" id="flowShiftLabel"></span></div>
+    <div class="chart-box"><canvas id="flowChart"></canvas></div>
+    <div id="flowBigSec">
+      <div class="section-title">大件线路明细 <span class="sub">流量单位：箱/小时</span></div>
+      <div class="table-scroll"><table id="flowTableBig"></table></div>
+    </div>
+    <div id="flowSmallSec" style="display:none">
+      <div class="section-title">小件线路明细 <span class="sub">流量单位：箱/小时</span></div>
+      <div class="table-scroll"><table id="flowTableSmall"></table></div>
+    </div>
+    <div class="note">饱和度 = 线路流量 ÷ 线路生产时间（效率标准）｜≥85% 高饱和 · ≥95% 严重饱和</div>
+  </div>
+</div>
+
+<!-- ========== 排序零件（受保护） ========== -->
+<div class="main-tab-content" id="tab-gkb">
+  <div id="gkbBody" style="display:none">
+    <div class="section-title">排序零件查询 <span class="sub">数据来源：GKB 零件属性表</span></div>
+    <div class="search-bar">
+      <input id="gkbSearch" placeholder="输入零件号 / 名称 / 工位 / 供应商 关键字搜索…">
+      <span class="count" id="gkbCount"></span>
+    </div>
+    <div class="table-scroll"><table id="gkbTable"></table></div>
+  </div>
+</div>
+
+<!-- ========== 道口 ========== -->
+<div class="main-tab-content" id="tab-daokou">
+  <div class="loading" id="daokouLoading">正在加载道口数据…</div>
+  <div id="daokouBody" style="display:none">
+    <div class="section-title">道口卸货及时率 <span class="sub">合格线 95%</span></div>
+    <div class="chart-box tall"><canvas id="daokouChart"></canvas></div>
+    <div class="section-title">班组月度明细</div>
+    <div class="table-scroll"><table id="daokouTable"></table></div>
+    <div class="note">≥95% 合格（绿）· 90~95% 关注（黄）· &lt;90% 异常（红）</div>
+  </div>
+</div>
+
+<!-- ========== 零件计划（受保护） ========== -->
+<div class="main-tab-content" id="tab-plan">
+  <div id="planBody" style="display:none">
+    <div class="section-title">零件计划查询 <span class="sub">按日期班次查看零件需求计划</span></div>
+    <div class="search-bar">
+      <input id="planSearch" placeholder="输入零件号 / 名称 / 日期 / 班次 关键字搜索…">
+      <span class="count" id="planCount"></span>
+    </div>
+    <div class="table-scroll"><table id="planTable"></table></div>
+  </div>
+</div>
+
+<!-- ========== 每日统计 ========== -->
+<div class="main-tab-content" id="tab-daily">
+  <div class="loading" id="dailyLoading">正在加载每日统计数据…</div>
+  <div id="dailyBody" style="display:none">
+    <div class="section-title">核心指标 <span class="sub" id="dailyShiftLabel"></span></div>
+    <div class="card-grid" id="dailyCards"></div>
+    <div class="section-title">近 14 班次箱量趋势</div>
+    <div class="chart-box tall"><canvas id="dailyChart"></canvas></div>
+    <div class="section-title">班次明细 <span class="sub">最近班次在前</span></div>
+    <div class="table-scroll"><table id="dailyTable"></table></div>
+  </div>
+</div>
+
+<!-- ========== 配料需求 ========== -->
+<div class="main-tab-content" id="tab-peiliao">
+  <div class="loading" id="peiliaoLoading">正在加载配料需求数据…</div>
+  <div id="peiliaoBody" style="display:none">
+    <div class="section-title">配料需求汇总 <span class="sub">单位：人/岗</span></div>
+    <div class="search-bar">
+      <input id="peiliaoSearch" placeholder="输入配料区 / 工位 关键字搜索…">
+      <span class="count" id="peiliaoCount"></span>
+    </div>
+    <div class="table-scroll"><table id="peiliaoTable"></table></div>
+    <div class="note">排序(+SPS) 表示该工位同时包含排序与 SPS 作业</div>
+  </div>
+</div>
+
+<div class="footer-note">数据由管线每日自动更新 · 网页与数据分离部署</div>
+
+<!-- ========== 密码门弹窗 ========== -->
+<div class="modal-mask" id="pwMask">
+  <div class="modal">
+    <h3>🔒 受保护数据</h3>
+    <p id="pwTip">该数据涉及敏感信息，请输入访问密码</p>
+    <input type="password" id="pwInput" placeholder="请输入密码" autocomplete="off">
+    <div class="err" id="pwErr"></div>
+    <div class="btns">
+      <button id="pwCancel">取消</button>
+      <button class="primary" id="pwOk">确认</button>
+    </div>
+  </div>
+</div>
+
+<!-- 离线内联数据兜底（file:// 双击打开时 fetch 不可用，走内联变量） -->
+<script src="data/meta_data.js"></script>
+<script src="data/flow_data.js"></script>
+<script src="data/daily_data.js"></script>
+<script src="data/daokou_data.js"></script>
+<script src="data/gkb_data.js"></script>
+<script src="data/plan_data.js"></script>
+<script src="data/peiliao_data.js"></script>
+
+<script src="js/common.js?v=1"></script>
+<script src="js/password-gate.js?v=1"></script>
+<script src="js/tab-overview.js?v=1"></script>
+<script src="js/tab-flow.js?v=1"></script>
+<script src="js/tab-gkb.js?v=1"></script>
+<script src="js/tab-daokou.js?v=1"></script>
+<script src="js/tab-plan.js?v=1"></script>
+<script src="js/tab-daily.js?v=1"></script>
+<script src="js/tab-peiliao.js?v=1"></script>
+<script src="js/main.js?v=1"></script>
+</body>
+</html>

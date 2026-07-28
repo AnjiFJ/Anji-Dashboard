@@ -1,0 +1,11 @@
+# 凭据类文件绝不入库（文档铁律）
+github_config.json
+email_config.ini
+*.token
+
+# 运行产物
+__pycache__/
+*.pyc
+.recycle/
+.DS_Store
+Thumbs.db

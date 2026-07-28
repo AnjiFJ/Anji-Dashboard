@@ -1,0 +1,88 @@
+{
+  "areas": [
+    {
+      "name": "配料A区",
+      "people": 12,
+      "rows": [
+        {
+          "station": "RK2-04",
+          "gongwei": 2,
+          "sps": 1,
+          "sort": 0
+        },
+        {
+          "station": "RK2-09",
+          "gongwei": 1,
+          "sps": 0,
+          "sort": 1
+        },
+        {
+          "station": "RK5-10",
+          "gongwei": 2,
+          "sps": 2,
+          "sort": 1
+        },
+        {
+          "station": "RK5-12",
+          "gongwei": 1,
+          "sps": 1,
+          "sort": 0
+        }
+      ]
+    },
+    {
+      "name": "配料B区",
+      "people": 9,
+      "rows": [
+        {
+          "station": "RK8-02",
+          "gongwei": 2,
+          "sps": 0,
+          "sort": 1
+        },
+        {
+          "station": "RK8-06",
+          "gongwei": 1,
+          "sps": 1,
+          "sort": 0
+        },
+        {
+          "station": "RK11-01",
+          "gongwei": 1,
+          "sps": 0,
+          "sort": 1
+        },
+        {
+          "station": "RK11-07",
+          "gongwei": 2,
+          "sps": 1,
+          "sort": 1
+        }
+      ]
+    },
+    {
+      "name": "配料C区",
+      "people": 7,
+      "rows": [
+        {
+          "station": "XJ1-06",
+          "gongwei": 1,
+          "sps": 1,
+          "sort": 0
+        },
+        {
+          "station": "XJ3-09",
+          "gongwei": 1,
+          "sps": 0,
+          "sort": 1
+        },
+        {
+          "station": "XJ6-03",
+          "gongwei": 0,
+          "sps": 1,
+          "sort": 1
+        }
+      ]
+    }
+  ]
+}
