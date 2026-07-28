@@ -30,9 +30,9 @@ function renderPeiliao(){
         totalG+=sg; totalS+=ss; totalR+=sr;
         html += "<tr class='subtotal'><td colspan='2'>"+a.name+" 小计</td><td>"+sg+"</td><td>"+ss+"</td><td>"+sr+"</td><td>"+(sg+ss+sr)+"</td></tr>";
       });
-      html += "<tr class='subtotal' style='background:rgba(34,211,238,.10)'><td colspan='2' style='color:#22d3ee'>总计</td>"+
-              "<td style='color:#22d3ee'>"+totalG+"</td><td style='color:#22d3ee'>"+totalS+"</td>"+
-              "<td style='color:#22d3ee'>"+totalR+"</td><td style='color:#22d3ee'>"+(totalG+totalS+totalR)+"</td></tr>";
+      html += "<tr class='subtotal' style='background:rgba(34,211,238,.10)'><td colspan='2' style='color:#2E9BEF'>总计</td>"+
+              "<td style='color:#2E9BEF'>"+totalG+"</td><td style='color:#2E9BEF'>"+totalS+"</td>"+
+              "<td style='color:#2E9BEF'>"+totalR+"</td><td style='color:#2E9BEF'>"+(totalG+totalS+totalR)+"</td></tr>";
       tbl.innerHTML = html + "</tbody>";
       document.getElementById("peiliaoCount").textContent = "共 "+shown+" 个工位";
     }

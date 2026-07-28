@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>现场数据看板</title>
 <script src="js/chart.umd.min.js"></script>
-<link rel="stylesheet" href="css/common.css?v=1">
+<link rel="stylesheet" href="css/common.css?v=2">
 </head>
 <body>
 
 <div class="header">
   <div class="title">
-    <div class="logo">📊</div>
-    <h1>现场数据看板<small>PRODUCTION OPERATION DASHBOARD</small></h1>
+    <div class="logo-mark"></div>
+    <h1><span class="zh">现场数据看板</span><span class="en">Production Operation Dashboard</span></h1>
   </div>
   <div class="clock"><b id="clockTime">--:--:--</b><br><span id="clockDate"></span></div>
 </div>
@@ -20,9 +20,9 @@
 <div class="main-tab-nav" id="tabNav">
   <button class="tab-btn active" data-tab="overview">总览</button>
   <button class="tab-btn" data-tab="flow">上线流量</button>
-  <button class="tab-btn" data-tab="gkb">排序零件<span class="lock">🔒</span></button>
+  <button class="tab-btn" data-tab="gkb">排序零件<span class="lock">密</span></button>
   <button class="tab-btn" data-tab="daokou">道口</button>
-  <button class="tab-btn" data-tab="plan">零件计划<span class="lock">🔒</span></button>
+  <button class="tab-btn" data-tab="plan">零件计划<span class="lock">密</span></button>
   <button class="tab-btn" data-tab="daily">每日统计</button>
   <button class="tab-btn" data-tab="peiliao">配料需求</button>
 </div>
@@ -133,7 +133,7 @@
 <!-- ========== 密码门弹窗 ========== -->
 <div class="modal-mask" id="pwMask">
   <div class="modal">
-    <h3>🔒 受保护数据</h3>
+    <h3>受保护数据</h3>
     <p id="pwTip">该数据涉及敏感信息，请输入访问密码</p>
     <input type="password" id="pwInput" placeholder="请输入密码" autocomplete="off">
     <div class="err" id="pwErr"></div>
@@ -153,15 +153,15 @@
 <script src="data/plan_data.js"></script>
 <script src="data/peiliao_data.js"></script>
 
-<script src="js/common.js?v=1"></script>
-<script src="js/password-gate.js?v=1"></script>
-<script src="js/tab-overview.js?v=1"></script>
-<script src="js/tab-flow.js?v=1"></script>
-<script src="js/tab-gkb.js?v=1"></script>
-<script src="js/tab-daokou.js?v=1"></script>
-<script src="js/tab-plan.js?v=1"></script>
-<script src="js/tab-daily.js?v=1"></script>
-<script src="js/tab-peiliao.js?v=1"></script>
-<script src="js/main.js?v=1"></script>
+<script src="js/common.js?v=2"></script>
+<script src="js/password-gate.js?v=2"></script>
+<script src="js/tab-overview.js?v=2"></script>
+<script src="js/tab-flow.js?v=2"></script>
+<script src="js/tab-gkb.js?v=2"></script>
+<script src="js/tab-daokou.js?v=2"></script>
+<script src="js/tab-plan.js?v=2"></script>
+<script src="js/tab-daily.js?v=2"></script>
+<script src="js/tab-peiliao.js?v=2"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>

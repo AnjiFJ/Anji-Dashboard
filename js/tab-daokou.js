@@ -21,7 +21,7 @@ function renderDaokou(){
     datasets.push({
       label:"95% 合格线", type:"line",
       data: data.teams.map(function(){return 95;}),
-      borderColor:"#f87171", borderDash:[6,5], borderWidth:1.5, pointRadius:0
+      borderColor:"#C03A31", borderDash:[6,5], borderWidth:1.5, pointRadius:0
     });
     destroyChart("daokou");
     allCharts["daokou"] = new Chart(document.getElementById("daokouChart"), {
@@ -38,7 +38,7 @@ function renderDaokou(){
         },
         scales:{
           y:{min:80, max:100, ticks:{callback:function(v){return v+"%";}},
-             grid:{color:"rgba(90,140,255,.10)"}},
+             grid:{color:"rgba(255,255,255,.06)"}},
           x:{grid:{display:false}}
         }
       }

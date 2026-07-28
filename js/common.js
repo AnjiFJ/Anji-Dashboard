@@ -9,21 +9,21 @@ function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(c){
   return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
 function destroyChart(key){ if(allCharts[key]){ allCharts[key].destroy(); delete allCharts[key]; } }
 
-/* ---------- Chart.js 全局配置与配色 ---------- */
+/* ---------- Chart.js 全局配置与配色（BMW 式沉稳色板） ---------- */
 if(window.Chart){
-  Chart.defaults.color = "#93a3c4";
-  Chart.defaults.borderColor = "rgba(90,140,255,.12)";
-  Chart.defaults.font.family = '"Microsoft YaHei","PingFang SC",sans-serif';
+  Chart.defaults.color = "#A6A6AB";
+  Chart.defaults.borderColor = "rgba(255,255,255,.08)";
+  Chart.defaults.font.family = '"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif';
 }
 function satColor(s){           // 饱和度配色
-  if(s>=0.9) return "#f87171";
-  if(s>=0.7) return "#fbbf24";
-  return "#34d399";
+  if(s>=0.9) return "#C03A31";
+  if(s>=0.7) return "#D9A626";
+  return "#3D9A50";
 }
 function rateColor(r){          // 及时率配色（95 合格线）
-  if(r>=95) return "#34d399";
-  if(r>=90) return "#fbbf24";
-  return "#f87171";
+  if(r>=95) return "#3D9A50";
+  if(r>=90) return "#D9A626";
+  return "#C03A31";
 }
 
 /* ---------- 数据加载器 ----------

@@ -19,10 +19,10 @@ function renderDaily(){
       return "<div class='delta "+cls+"'>"+arrow+" "+Math.abs(d).toFixed(1)+"% vs 上一班次</div>";
     }
     var cards = [
-      {label:"到货箱数", val:data.arrive[n], prev:data.arrive[n-1], color:"#22d3ee"},
-      {label:"上架箱数", val:data.shelf[n],  prev:data.shelf[n-1],  color:"#3b82f6"},
-      {label:"拣货箱数", val:data.pick[n],   prev:data.pick[n-1],   color:"#a78bfa"},
-      {label:"出库箱数", val:data.out[n],    prev:data.out[n-1],    color:"#34d399"}
+      {label:"到货箱数", val:data.arrive[n], prev:data.arrive[n-1], color:"#2E9BEF"},
+      {label:"上架箱数", val:data.shelf[n],  prev:data.shelf[n-1],  color:"#2E9BEF"},
+      {label:"拣货箱数", val:data.pick[n],   prev:data.pick[n-1],   color:"#7E6FA8"},
+      {label:"出库箱数", val:data.out[n],    prev:data.out[n-1],    color:"#3D9A50"}
     ];
     document.getElementById("dailyCards").innerHTML = cards.map(function(c){
       return "<div class='stat-card' style='--accent:"+c.color+"'>"+
@@ -38,17 +38,17 @@ function renderDaily(){
       data:{
         labels:data.shifts,
         datasets:[
-          {label:"到货", data:data.arrive, borderColor:"#22d3ee", backgroundColor:"#22d3ee", tension:.3, pointRadius:3},
-          {label:"上架", data:data.shelf,  borderColor:"#3b82f6", backgroundColor:"#3b82f6", tension:.3, pointRadius:3},
-          {label:"拣货", data:data.pick,   borderColor:"#a78bfa", backgroundColor:"#a78bfa", tension:.3, pointRadius:3},
-          {label:"出库", data:data.out,    borderColor:"#34d399", backgroundColor:"#34d399", tension:.3, pointRadius:3}
+          {label:"到货", data:data.arrive, borderColor:"#2E9BEF", backgroundColor:"#2E9BEF", tension:.3, pointRadius:3},
+          {label:"上架", data:data.shelf,  borderColor:"#2E9BEF", backgroundColor:"#2E9BEF", tension:.3, pointRadius:3},
+          {label:"拣货", data:data.pick,   borderColor:"#7E6FA8", backgroundColor:"#7E6FA8", tension:.3, pointRadius:3},
+          {label:"出库", data:data.out,    borderColor:"#3D9A50", backgroundColor:"#3D9A50", tension:.3, pointRadius:3}
         ]
       },
       options:{
         responsive:true, maintainAspectRatio:false,
         interaction:{mode:"index", intersect:false},
         plugins:{legend:{labels:{boxWidth:12}}},
-        scales:{y:{grid:{color:"rgba(90,140,255,.10)"}}, x:{grid:{display:false}}}
+        scales:{y:{grid:{color:"rgba(255,255,255,.06)"}}, x:{grid:{display:false}}}
       }
     });
 
